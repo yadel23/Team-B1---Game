@@ -1,2 +1,2 @@
-# Team-B1---Game
-SER-225 Game
+# Team-B1
+SER-225 Introduction to Software Development
