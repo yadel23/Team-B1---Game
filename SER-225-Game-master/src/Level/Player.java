@@ -146,6 +146,7 @@ public abstract class Player extends GameObject {
 		// sets animation to a WALK animation based on which way player is facing
 		currentAnimationName = facingDirection == Direction.RIGHT ? "WALK_RIGHT" : "WALK_LEFT";
 
+		// if left key is pressed it moves left and allows for override
 		if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
 			if (Keyboard.isKeyUp(MOVE_RIGHT_KEY)) {
 				moveAmountX -= walkSpeed;
@@ -153,15 +154,14 @@ public abstract class Player extends GameObject {
 			}
 			if (Keyboard.isKeyDown(MOVE_RIGHT_KEY) && facingDirection == Direction.RIGHT) {
 				moveAmountX -= walkSpeed;
-				//facingDirection = Direction.LEFT;
 			}
 			if (Keyboard.isKeyDown(MOVE_RIGHT_KEY) && facingDirection == Direction.LEFT) {
 				moveAmountX += walkSpeed;
-				//facingDirection = Direction.RIGHT;
 			}
 
 		}
 
+		// if right is pressed it moves right 
 		else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
 			moveAmountX += walkSpeed;
 			facingDirection = Direction.RIGHT;
