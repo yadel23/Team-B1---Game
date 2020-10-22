@@ -1,6 +1,9 @@
+//****CHANGES MADE IN THIS CLASS (not sure if needed tho)
 package Engine;
 
 import javax.swing.*;
+
+import Game.ScreenCoordinator;
 
 /*
  * The JFrame that holds the GamePanel
@@ -31,5 +34,10 @@ public class GameWindow {
 
 	public ScreenManager getScreenManager() {
 		return gamePanel.getScreenManager();
+	}
+	
+	// sets the game panels screen coordinator 
+	public void setScreenCoordinator(ScreenCoordinator sc) {
+		gamePanel.setScreenCoordinator(sc);
 	}
 }
