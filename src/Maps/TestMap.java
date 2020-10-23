@@ -22,12 +22,30 @@ public class TestMap extends Map {
     }
 
     @Override
-    public ArrayList<Enemy> loadEnemies() {
-        ArrayList<Enemy> enemies = new ArrayList<>();
-        enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
-        enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
-        return enemies;
-    }
+//    public ArrayList<Enemy> loadEnemies() {
+//        ArrayList<Enemy> enemies = new ArrayList<>();
+//        enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
+//        enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
+//        return enemies;
+//    }
+    
+    //NEW CODE
+    public ArrayList<Enemy> loadEnemies() {   
+    	ArrayList<Enemy> enemies = new ArrayList<>();        
+        enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));         
+//    	SecondBug = new BugEnemy(new Point(672, 402), Direction.LEFT);     
+//    	enemies.add(SecondBug);         
+//    	//System.out.println("this is the x position of the bug **** " + SecondBug.currentFrame.getX());         
+//    	if(SecondBug.getX() > 592) {     
+//    		SecondBug.setFacingDirection(Direction.RIGHT);         
+//    	}else if(SecondBug.getX() < 786) {         
+//    		SecondBug.setFacingDirection(Direction.LEFT);         
+//    	}        
+//    	ThirdBug = new BugEnemy(getPositionByTileIndex(10, 9), Direction.LEFT);     
+     // enemies.add(ThirdBug);              
+    	enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
+    return enemies;
+}
 
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
