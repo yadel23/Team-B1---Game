@@ -1,3 +1,4 @@
+/bin/
 .classpath
 .settings
 .project
@@ -8,3 +9,4 @@ classes/
 out/
 TestResources/
 _site
+.DS_Store 

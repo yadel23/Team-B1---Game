@@ -3,7 +3,9 @@ package Game;
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
+import Screens.AvatarOptionsScreen;
 import Screens.CreditsScreen;
+import Screens.HowToScreen;
 import Screens.MenuScreen;
 import Screens.PlayLevelScreen;
 
@@ -49,6 +51,12 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
+						break;
+					case HOWTO:
+						currentScreen = new HowToScreen(this);
+						break;
+					case CHOOSEAVATAR:
+						currentScreen = new AvatarOptionsScreen(this);
 						break;
 				}
 				currentScreen.initialize();

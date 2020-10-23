@@ -97,12 +97,12 @@ public class GamePanel extends JPanel {
 
 	// only lets the game be paused if the game state is the level 
 	public void update() {
-		if(screenCoordinator.getGameState() == GameState.LEVEL) {
-			if (Keyboard.isKeyDown(pauseKey) && !keyLocker.isKeyLocked(pauseKey)) {
-				isGamePaused = !isGamePaused;
-				keyLocker.lockKey(pauseKey);
-			}
-		}
+//		if(screenCoordinator.getGameState() == GameState.LEVEL) {
+//			if (Keyboard.isKeyDown(pauseKey) && !keyLocker.isKeyLocked(pauseKey)) {
+//				isGamePaused = !isGamePaused;
+//				keyLocker.lockKey(pauseKey);
+//			}
+	//	}
 		
 		if (Keyboard.isKeyUp(pauseKey)) {
 			keyLocker.unlockKey(pauseKey);
