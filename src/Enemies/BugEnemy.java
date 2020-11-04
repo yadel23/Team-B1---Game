@@ -49,7 +49,7 @@ public class BugEnemy extends Enemy {
     	}
     }
 
-    @Override
+	@Override
     public void initialize() {
         super.initialize();
         facingDirection = startFacingDirection;
@@ -60,7 +60,8 @@ public class BugEnemy extends Enemy {
         }
         airGroundState = AirGroundState.GROUND;
     }
-
+    
+	
     @Override
     public void update(Player player) {
         float moveAmountX = 0;
@@ -85,6 +86,18 @@ public class BugEnemy extends Enemy {
         super.update(player);
     }
 
+    //NEW CODE
+    public boolean getAirGroundState() {
+    	boolean groundstate = false;
+    	if (airGroundState == AirGroundState.AIR) {
+    		groundstate = true;
+    	}
+    	     return groundstate;
+	}
+	public void setAirGroundState(AirGroundState airGroundState) {
+		this.airGroundState = airGroundState;
+	}
+	
     @Override
     public void onEndCollisionCheckX(boolean hasCollided, Direction direction) {
         // if bug has collided into something while walking forward,
