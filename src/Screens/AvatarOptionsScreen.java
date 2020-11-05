@@ -43,6 +43,7 @@ public class AvatarOptionsScreen extends Screen{
         this.screenCoordinator = screenCoordinator;   
     }
     
+    
     @Override
     public void initialize() {
         // setup graphics on screen (background map, spritefont text)
