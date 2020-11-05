@@ -1,8 +1,10 @@
 package SpriteFont;
 
 import Engine.GraphicsHandler;
+import Engine.ImageLoader;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 // This class represents a sprite font, which is graphic text (text drawn to the screen as if it were an image)
 public class SpriteFont {
@@ -13,6 +15,9 @@ public class SpriteFont {
 	protected Color color;
 	protected Color outlineColor;
 	protected float outlineThickness = 1f;
+	
+	private  BufferedImage image;
+	
 
 	public SpriteFont(String text, float x, float y, String fontName, int fontSize, Color color) {
 		this.text = text;
@@ -21,7 +26,16 @@ public class SpriteFont {
 		this.y = y;
 		this.color = color;
 	}
+     
+//	public SpriteFont(BufferedImage bufferedImage, float x, float y) {
+//		this.image = bufferedImage;
+//		this.x = x;
+//		this.y = y;
+//	}
 
+	
+	
+	
 	public void setColor(Color color) {
 		this.color = color;
 	}

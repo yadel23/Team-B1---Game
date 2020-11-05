@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 // Represents a test map to be used in a level
 public class TestMap extends Map {
+	private BugEnemy SecondBug, ThirdBug;
 
     public TestMap() {
         super("test_map.txt", new CommonTileset(), new Point(1, 11));
@@ -28,7 +29,33 @@ public class TestMap extends Map {
         enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
         return enemies;
     }
-
+ 
+/*   
+    //NEW CODE
+    public ArrayList<Enemy> loadEnemies() {   
+    	ArrayList<Enemy> enemies = new ArrayList<>();        
+        //enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));  
+        
+    	SecondBug = new BugEnemy(new Point(675, 300), Direction.LEFT);     
+    	enemies.add(SecondBug);    
+    	System.out.println("this is the state of the bug " + SecondBug.getAirGroundState());
+    	if(SecondBug.getAirGroundState() == true && SecondBug.getFacingDirection() == Direction.LEFT) {
+    		SecondBug.setFacingDirection(Direction.RIGHT); 
+    	} else if(SecondBug.getAirGroundState() == true && SecondBug.getFacingDirection() == Direction.RIGHT) {
+    		SecondBug.setFacingDirection(Direction.LEFT);
+    	}
+//    	//System.out.println("this is the x position of the bug **** " + SecondBug.currentFrame.getX());         
+//    	if(SecondBug.getX() > 592) {     
+//    		SecondBug.setFacingDirection(Direction.RIGHT);         
+//    	}else if(SecondBug.getX() < 786) {         
+//    		SecondBug.setFacingDirection(Direction.LEFT);         
+//    	}        
+//    	ThirdBug = new BugEnemy(getPositionByTileIndex(10, 9), Direction.LEFT);     
+     // enemies.add(ThirdBug);              
+    	enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
+    return enemies;
+}
+*/
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();

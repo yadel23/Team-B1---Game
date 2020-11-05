@@ -2,6 +2,8 @@ package GameObject;
 
 import java.awt.image.BufferedImage;
 
+import Engine.GraphicsHandler;
+
 // This class is for reading in a SpriteSheet (collection of images laid out in a specific way)
 // As long as each graphic on the sheet is the same size, it can parse it into sub images
 public class SpriteSheet {
@@ -41,4 +43,5 @@ public class SpriteSheet {
 	public int getSpriteHeight() {
 		return spriteHeight;
 	}
+		 
 }

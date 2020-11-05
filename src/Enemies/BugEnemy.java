@@ -23,14 +23,33 @@ public class BugEnemy extends Enemy {
     private Direction startFacingDirection;
     private Direction facingDirection;
     private AirGroundState airGroundState;
+    public int BugEnemyXLocation;
 
     public BugEnemy(Point location, Direction facingDirection) {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("BugEnemy.png"), 24, 15), "WALK_LEFT");
         this.startFacingDirection = facingDirection;
         this.initialize();
     }
+	//NEW CODE
+	public int getBugEnemyXLocation() {
+		return BugEnemyXLocation;
+	}
+    //NEW CODE   
+    public Direction getFacingDirection() { 		
+    	return facingDirection; 	
+    	}   
+    
+    //NEW CODE 	
+    public void setFacingDirection(Direction facingDirection) { 	
+    	this.facingDirection = facingDirection;       
+    	if (facingDirection == Direction.RIGHT) {        
+    		currentAnimationName = "WALK_RIGHT";
+    	} else if (facingDirection == Direction.LEFT) {
+    		currentAnimationName = "WALK_LEFT";
+    	}
+    }
 
-    @Override
+	@Override
     public void initialize() {
         super.initialize();
         facingDirection = startFacingDirection;
@@ -41,7 +60,8 @@ public class BugEnemy extends Enemy {
         }
         airGroundState = AirGroundState.GROUND;
     }
-
+    
+	
     @Override
     public void update(Player player) {
         float moveAmountX = 0;
@@ -66,6 +86,18 @@ public class BugEnemy extends Enemy {
         super.update(player);
     }
 
+    //NEW CODE
+    public boolean getAirGroundState() {
+    	boolean groundstate = false;
+    	if (airGroundState == AirGroundState.AIR) {
+    		groundstate = true;
+    	}
+    	     return groundstate;
+	}
+	public void setAirGroundState(AirGroundState airGroundState) {
+		this.airGroundState = airGroundState;
+	}
+	
     @Override
     public void onEndCollisionCheckX(boolean hasCollided, Direction direction) {
         // if bug has collided into something while walking forward,

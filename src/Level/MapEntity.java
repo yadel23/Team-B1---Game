@@ -11,8 +11,9 @@ public class MapEntity extends GameObject {
     protected MapEntityStatus mapEntityStatus = MapEntityStatus.ACTIVE;
 
     // if true, if entity goes out of the camera's update range, and then ends up back in range, the entity will "respawn" back to its starting parameters
-    protected boolean isRespawnable = true;
-
+    protected boolean isRespawnable = false;
+    //was originally true;
+    
     // if true, enemy cannot go out of camera's update range
     protected boolean isUpdateOffScreen = false;
 
