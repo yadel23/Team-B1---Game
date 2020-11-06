@@ -37,6 +37,7 @@ public class AvatarOptionsScreen extends Screen{
     
     protected int currentMenuItemHovered = 0; // current menu item being "hovered" over
     protected int menuItemSelected = -1;
+    protected static int chosenavatar = 0;
     
     
     public AvatarOptionsScreen(ScreenCoordinator screenCoordinator) {
@@ -59,7 +60,7 @@ public class AvatarOptionsScreen extends Screen{
 //          Avatar3 = new SpriteFont(ImageLoader.load("Cat.png"), 200, 280);
 //          Avatar4 = new SpriteFont(ImageLoader.load("Cat.png"), 200, 360);
           
-          returnInstructionsLabel = new SpriteFont("Press Space to pick Avatar and return to the menu.", 20, 560, "Times New Roman", 30, Color.BLACK);
+          returnInstructionsLabel = new SpriteFont("Press Esc to return to the menu.", 20, 560, "Times New Roman", 30, Color.BLACK);
           keyLocker.lockKey(Key.SPACE);   
         
     }
@@ -114,13 +115,21 @@ public class AvatarOptionsScreen extends Screen{
             keyLocker.unlockKey(Key.SPACE);
         }
 
-        // if space is pressed, go back to main menu
+        if(!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE) && currentMenuItemHovered == 0){
+            chosenavatar = 0;
+            System.out.println("Hi this is working");
+        }
+        else if(!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE) && currentMenuItemHovered == 1){
+            chosenavatar = 1;
+            System.out.println("Hi this is working 2");
+        }
+
+        // if Esc is pressed, go back to main menu
         if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
             screenCoordinator.setGameState(GameState.MENU);
         }
-        else if(!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)){
 
-        }
+
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
