@@ -1,5 +1,6 @@
 package Screens;
 
+//import Engine.Audio;
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Game.GameState;
@@ -9,6 +10,9 @@ import Level.Player;
 import Level.PlayerListener;
 import Maps.TestMap;
 import Players.Cat;
+import Players.Dog;
+import Players.Ninja;
+import Players.Yoshi;
 import Utils.Stopwatch;
 
 // This class is for when the platformer game is actually being played
@@ -20,6 +24,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected Stopwatch screenTimer = new Stopwatch();
     protected LevelClearedScreen levelClearedScreen;
     protected LevelLoseScreen levelLoseScreen;
+    protected AvatarOptionsScreen avatar;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -29,14 +34,39 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         // define/setup map
         this.map = new TestMap();
         map.reset();
+        //Audio.playMusic("BGM.wav");
 
         // setup player
-        this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        this.player.setMap(map);
-        this.player.addListener(this);
-        this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+        if (avatar.chosenavatar == 0) {
+            this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.player.setMap(map);
+            this.player.addListener(this);
+            this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+        }
+        else if (avatar.chosenavatar == 1) {
+            this.player = new Dog(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.player.setMap(map);
+            this.player.addListener(this);
+            this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+        }
+        else if (avatar.chosenavatar == 2) {
+            this.player = new Yoshi(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.player.setMap(map);
+            this.player.addListener(this);
+            this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+        }
+        else if (avatar.chosenavatar == 3) {
+            this.player = new Ninja(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.player.setMap(map);
+            this.player.addListener(this);
+            this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+        }
     }
+
 
     public void update() {
         // based on screen state, perform specific actions
