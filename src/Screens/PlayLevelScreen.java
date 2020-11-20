@@ -1,5 +1,7 @@
 package Screens;
 
+import java.awt.Color;
+
 import Engine.Audio;
 import Engine.GraphicsHandler;
 import Engine.Screen;
@@ -11,6 +13,7 @@ import Level.PlayerListener;
 import Maps.TestMap;
 import Players.Cat;
 import Players.Dog;
+import SpriteFont.SpriteFont;
 import Utils.Stopwatch;
 
 // This class is for when the platformer game is actually being played
@@ -18,11 +21,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
-    protected PlayLevelScreenState playLevelScreenState;
+    protected static PlayLevelScreenState playLevelScreenState;
     protected Stopwatch screenTimer = new Stopwatch();
     protected LevelClearedScreen levelClearedScreen;
     protected LevelLoseScreen levelLoseScreen;
     protected AvatarOptionsScreen avatar;
+    protected SpriteFont livesLabel;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -95,6 +99,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case PLAYER_DEAD:
                 map.draw(graphicsHandler);
                 player.draw(graphicsHandler);
+                livesLabel = new SpriteFont("lives: " + Player.getNumOfLives(), 700, 60, "Comic Sans", 24, Color.white);
+        		livesLabel.setOutlineColor(Color.black);
+        		livesLabel.setOutlineThickness(2.0f);
+    			livesLabel.draw(graphicsHandler);
                 break;
             case LEVEL_WIN_MESSAGE:
                 levelClearedScreen.draw(graphicsHandler);
@@ -107,6 +115,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
     public PlayLevelScreenState getPlayLevelScreenState() {
         return playLevelScreenState;
+    }
+    public static boolean playLevelScreenRunning() {
+    	return playLevelScreenState == PlayLevelScreenState.RUNNING;
     }
 
     @Override
@@ -131,4 +142,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     private enum PlayLevelScreenState {
         RUNNING, LEVEL_COMPLETED, PLAYER_DEAD, LEVEL_WIN_MESSAGE, LEVEL_LOSE_MESSAGE
     }
+    
+    public static boolean levelOver() {
+		if(playLevelScreenState == PlayLevelScreenState.RUNNING) {
+		return false;
+		}
+		else
+			return true;
+	}
 }
