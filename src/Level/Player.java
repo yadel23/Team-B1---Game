@@ -51,6 +51,13 @@ public abstract class Player extends GameObject {
 	// if true, player cannot be hurt by enemies (good for testing)
 	protected boolean isInvincible = false;
 	//was originally false
+	
+	protected int numOfCollisions = 0;
+	protected static int numOfLives;
+
+	protected boolean firstCollision;
+	protected long collisionStartTime, collisionTime, secondsPassed, millisPassed;
+
 
 	public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
 		super(spriteSheet, x, y, startingAnimationName);
@@ -60,6 +67,9 @@ public abstract class Player extends GameObject {
 		playerState = PlayerState.STANDING;
 		previousPlayerState = playerState;
 		levelState = LevelState.RUNNING;
+		firstCollision = true;
+		numOfLives = 3;
+
 	}
 
 	public void update() {
@@ -357,8 +367,22 @@ public abstract class Player extends GameObject {
 	// other entities can call this method to hurt the player
 	public void hurtPlayer(MapEntity mapEntity) {
 		if (!isInvincible) {
+			if (firstCollision) {
+				collisionStartTime = System.currentTimeMillis();
+				firstCollision = false;
+				numOfCollisions = numOfCollisions + 1;
+				numOfLives = numOfLives - 1;
+			}
+			
+			collisionTime = System.currentTimeMillis() - collisionStartTime;
+			secondsPassed = (collisionTime / 1000);
+			if (secondsPassed > 0.25) {
+				numOfCollisions = numOfCollisions + 1;
+				numOfLives = numOfLives - 1;
+				collisionStartTime = System.currentTimeMillis();
+			}
 			// if map entity is an enemy, kill player on touch
-			if (mapEntity instanceof Enemy) {
+			if (mapEntity instanceof Enemy && numOfCollisions >= 3) {
 				levelState = LevelState.PLAYER_DEAD;
 			}
 		}
@@ -448,5 +472,8 @@ public abstract class Player extends GameObject {
 
 	public void addListener(PlayerListener listener) {
 		listeners.add(listener);
+	}
+	public static int getNumOfLives() {
+		return numOfLives;
 	}
 }

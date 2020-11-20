@@ -14,10 +14,10 @@ import java.util.HashMap;
 
 // This is the class for the Dog player character
 // basically just sets some values for physics and then defines animations
-public class Dog extends Player {
+public class Ninja extends Player {
 
-    public Dog(float x, float y) {
-        super(new SpriteSheet(ImageLoader.load("Dog.png"), 75, 75), x, y, "STAND_RIGHT");
+    public Ninja(float x, float y) {
+        super(new SpriteSheet(ImageLoader.load("Ninja.png"), 209, 190), x, y, "STAND_RIGHT");
         gravity = .5f;
         terminalVelocityY = 6f;
         jumpHeight = 14.5f;
@@ -36,7 +36,7 @@ public class Dog extends Player {
 
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
-        //drawBounds(graphicsHandler, new Color(255, 0, 0, 170));
+     // drawBounds(graphicsHandler, new Color(255, 0, 0, 170));
     }
 
     @Override
@@ -44,129 +44,129 @@ public class Dog extends Player {
         return new HashMap<String, Frame[]>() {{
             put("STAND_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0), 0)
-                            .withScale(.7f)
-                            .withBounds(15, 40, 45, 18)
+                            .withScale(.33F)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0), 0)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(15, 40, 45, 18)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("WALK_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(1, 0), 200)
-                            .withScale(.7f)
-                            .withBounds(15, 40, 45, 18)
+                            .withScale(.33F)
+                            .withBounds(70, 43, 70, 120)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 1), 200)
-                            .withScale(.7f)
-                            .withBounds(15, 40, 45, 18)
+                            .withScale(.33F)
+                            .withBounds(70, 43, 70, 120)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 2), 200)
-                            .withScale(.7f)
-                            .withBounds(15, 40, 45, 18)
+                            .withScale(.33F)
+                            .withBounds(70, 43, 70, 120)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 3), 200)
-                            .withScale(.7f)
-                            .withBounds(15, 40, 45, 18)
+                            .withScale(.33F)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("WALK_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(1, 0), 200)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(15, 40, 45, 18)
+                            .withBounds(70, 43, 70, 120)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 1), 200)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(15, 40, 45, 18)
+                            .withBounds(70, 43, 70, 120)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 2), 200)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(15, 40, 45, 18)
+                            .withBounds(70, 43, 70, 120)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 3), 200)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(15, 40, 45, 18)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("JUMP_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(2, 0), 0)
-                            .withScale(.7f)
-                            .withBounds(15, 40, 45, 18)
+                            .withScale(.33F)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("JUMP_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(2, 0), 0)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(15, 40, 45, 18)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("FALL_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(3, 0), 0)
-                            .withScale(.7f)
-                            .withBounds(15, 40, 45, 18)
+                            .withScale(.33F)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("FALL_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(3, 0), 0)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(15, 40, 45, 18)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("CROUCH_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(4, 0), 0)
-                            .withScale(.7f)
-                            .withBounds(15, 40, 45, 18)
+                            .withScale(.33F)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("CROUCH_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(4, 0), 0)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(15, 40, 45, 18)
+                            .withBounds(70, 43, 70, 120)
                             .build()
             });
 
             put("DEATH_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(5, 0), 100)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(5, 1), 100)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(5, 2), -1)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .build()
             });
 
             put("DEATH_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(5, 0), 100)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(5, 1), 100)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(5, 2), -1)
-                            .withScale(.7f)
+                            .withScale(.33F)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });

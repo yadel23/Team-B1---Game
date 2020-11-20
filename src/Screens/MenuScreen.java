@@ -53,8 +53,7 @@ public class MenuScreen extends Screen {
         chooseAvatar.setOutlineThickness(3);
         
         getInstructions = new SpriteFont("Press Space on any selected item.", 20, 560, "Times New Roman", 30, Color.white);
-       
-       // Audio.playMusic("BGM.wav");
+
     }
 
     public void update() {

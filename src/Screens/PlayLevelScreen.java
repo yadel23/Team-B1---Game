@@ -1,6 +1,6 @@
 package Screens;
 
-import Engine.Audio;
+//import Engine.Audio;
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Game.GameState;
@@ -12,6 +12,8 @@ import Maps.TestMap;
 import Maps.TestMap2;
 import Players.Cat;
 import Players.Dog;
+import Players.Ninja;
+import Players.Yoshi;
 import Utils.Stopwatch;
 
 // This class is for when the platformer game is actually being played
@@ -32,6 +34,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
     public void initialize() {
         // define/setup map
+
         if(level1Completed) {
             System.out.println("Heyo we here");
             this.map = new TestMap2();
@@ -48,6 +51,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
 
 
+
         // setup player
         if (avatar.chosenavatar == 0) {
             this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -58,6 +62,20 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         }
         else if (avatar.chosenavatar == 1) {
             this.player = new Dog(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.player.setMap(map);
+            this.player.addListener(this);
+            this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+        }
+        else if (avatar.chosenavatar == 2) {
+            this.player = new Yoshi(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.player.setMap(map);
+            this.player.addListener(this);
+            this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+        }
+        else if (avatar.chosenavatar == 3) {
+            this.player = new Ninja(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
             this.player.setMap(map);
             this.player.addListener(this);
             this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
