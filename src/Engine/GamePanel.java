@@ -29,13 +29,16 @@ public class GamePanel extends JPanel {
 
 	// used to create the game loop and cycle between update and draw calls
 	private Timer timer;
+	
+	private long startTime, millisPassed, secondsPassed, minutesPassed, pauseTime;
+	private boolean wasStarted, timerStart;
 
 	// used to draw graphics to the panel
 	private GraphicsHandler graphicsHandler;
 
 	private boolean doPaint = false;
 	private boolean isGamePaused = false;
-	private SpriteFont pauseLabel;
+	private SpriteFont pauseLabel, timerLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.P;
 
@@ -56,6 +59,7 @@ public class GamePanel extends JPanel {
 		pauseLabel = new SpriteFont("PAUSE", 365, 280, "Comic Sans", 24, Color.white);
 		pauseLabel.setOutlineColor(Color.black);
 		pauseLabel.setOutlineThickness(2.0f);
+		timerLabel = new SpriteFont(minutesPassed + ":" + secondsPassed, 720, 25, "Comic Sans", 24, Color.white);
 
 		// Every timer "tick" will call the update method as well as tell the JPanel to
 		// repaint
@@ -89,6 +93,7 @@ public class GamePanel extends JPanel {
 	// this starts the timer (the game loop is started here
 	public void startGame() {
 		timer.start();
+		wasStarted = true;
 	}
 
 	public ScreenManager getScreenManager() {
@@ -111,11 +116,62 @@ public class GamePanel extends JPanel {
 		if (!isGamePaused) {
 			screenManager.update();
 		}
+		gameTimer();
 	}
+	// runs the timer that counts how long the player has been playing to be used
+		// for the score
+		public void gameTimer() {
+			if (PlayLevelScreen.playLevelScreenRunning()) {
 
+				if (wasStarted) {
+					startTime = System.currentTimeMillis();
+					wasStarted = false;
+					timerStart = true;
+				}
+				
+				if (isGamePaused) {
+					pauseTime = System.currentTimeMillis() - startTime - millisPassed;
+				} else {
+					millisPassed = System.currentTimeMillis() - startTime - pauseTime;
+					secondsPassed = (millisPassed / 1000);
+
+					if (secondsPassed >= 60) {
+						minutesPassed = minutesPassed + 1;
+						secondsPassed = 0;
+
+						startTime = System.currentTimeMillis();
+
+					}
+				}
+
+				// System.out.println("minutes: " + minutesPassed + " seconds: " +
+				// secondsPassed);
+				String timerString;
+
+				if (secondsPassed < 10) {
+					timerString = minutesPassed + ":0" + secondsPassed;
+				} else {
+					timerString = minutesPassed + ":" + secondsPassed;
+				}
+				timerLabel = new SpriteFont(timerString, 720, 25, "Comic Sans", 24, Color.white);
+				timerLabel.setOutlineColor(Color.black);
+				timerLabel.setOutlineThickness(2.0f);
+			} else if (PlayLevelScreen.levelOver()) {
+				startTime = System.currentTimeMillis();
+				wasStarted = false;
+				timerStart = true;
+				pauseTime = 0;
+			}
+		}
+		
+		
 	public void draw() {
 		screenManager.draw(graphicsHandler);
 
+		if (timerStart && PlayLevelScreen.playLevelScreenRunning()) {
+			timerLabel.draw(graphicsHandler);
+		}
+		
 		// if game is paused, draw pause gfx over Screen gfx
 		if (isGamePaused) {
 			pauseLabel.draw(graphicsHandler);

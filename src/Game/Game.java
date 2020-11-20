@@ -10,16 +10,20 @@ import Engine.ScreenManager;
  */
 public class Game {
 
-    public static void main(String[] args) {
-        new Game();
-     }
+	public static void main(String[] args) {
+		new Game();
+	}
 
-    public Game() {
-    	GameWindow gameWindow = new GameWindow();
-        gameWindow.startGame();
-        ScreenManager screenManager = gameWindow.getScreenManager();
-        ScreenCoordinator screenCoordinator = new ScreenCoordinator();
-        screenManager.setCurrentScreen(screenCoordinator);
-        gameWindow.setScreenCoordinator(screenCoordinator);
-    }
+	public Game() {
+		GameWindow gameWindow = new GameWindow();
+		gameWindow.startGame();
+		ScreenManager screenManager = gameWindow.getScreenManager();
+		ScreenCoordinator screenCoordinator = new ScreenCoordinator();
+		screenManager.setCurrentScreen(screenCoordinator);
+		gameWindow.setScreenCoordinator(screenCoordinator);
+
+
+	}
+
+
 }
