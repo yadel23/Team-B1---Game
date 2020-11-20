@@ -9,6 +9,7 @@ import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Player;
 
+import java.awt.*;
 import java.util.HashMap;
 
 // This is the class for the Dog player character
@@ -16,7 +17,7 @@ import java.util.HashMap;
 public class Dog extends Player {
 
     public Dog(float x, float y) {
-        super(new SpriteSheet(ImageLoader.load("Dog.png"), 100, 65), x, y, "STAND_RIGHT");
+        super(new SpriteSheet(ImageLoader.load("Dog.png"), 74, 65), x, y, "STAND_RIGHT");
         gravity = .5f;
         terminalVelocityY = 6f;
         jumpHeight = 14.5f;
@@ -44,7 +45,7 @@ public class Dog extends Player {
             put("STAND_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0), 0)
                             .withScale(.7f)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build()
             });
 
@@ -52,26 +53,26 @@ public class Dog extends Player {
                     new FrameBuilder(spriteSheet.getSprite(0, 0), 0)
                             .withScale(.7f)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build()
             });
 
             put("WALK_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(1, 0), 200)
                             .withScale(.7f)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 1), 200)
                             .withScale(.7f)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 2), 200)
                             .withScale(.7f)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 3), 200)
                             .withScale(.7f)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build()
             });
 
@@ -79,29 +80,29 @@ public class Dog extends Player {
                     new FrameBuilder(spriteSheet.getSprite(1, 0), 200)
                             .withScale(.7f)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 1), 200)
                             .withScale(.7f)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 2), 200)
                             .withScale(.7f)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build(),
                     new FrameBuilder(spriteSheet.getSprite(1, 3), 200)
                             .withScale(.7f)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build()
             });
 
             put("JUMP_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(2, 0), 0)
                             .withScale(.7f)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build()
             });
 
@@ -109,14 +110,14 @@ public class Dog extends Player {
                     new FrameBuilder(spriteSheet.getSprite(2, 0), 0)
                             .withScale(.7f)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build()
             });
 
             put("FALL_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(3, 0), 0)
                             .withScale(.7f)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build()
             });
 
@@ -124,14 +125,14 @@ public class Dog extends Player {
                     new FrameBuilder(spriteSheet.getSprite(3, 0), 0)
                             .withScale(.7f)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(8, 9, 8, 9)
+                            .withBounds(8, 40, 55, 15)
                             .build()
             });
 
             put("CROUCH_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(4, 0), 0)
                             .withScale(.7f)
-                            .withBounds(8, 12, 8, 6)
+                            .withBounds(8, 44, 55, 11)
                             .build()
             });
 
@@ -139,7 +140,7 @@ public class Dog extends Player {
                     new FrameBuilder(spriteSheet.getSprite(4, 0), 0)
                             .withScale(.7f)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                            .withBounds(8, 12, 8, 6)
+                            .withBounds(8, 44, 55, 11)
                             .build()
             });
 
@@ -171,4 +172,5 @@ public class Dog extends Player {
             });
         }};
     }
+
 }

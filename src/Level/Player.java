@@ -49,7 +49,7 @@ public abstract class Player extends GameObject {
 	protected Key D_KEY = Key.D;
 
 	// if true, player cannot be hurt by enemies (good for testing)
-	protected boolean isInvincible = true;
+	protected boolean isInvincible = false;
 	//was originally false
 
 	public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {

@@ -117,17 +117,18 @@ public class AvatarOptionsScreen extends Screen{
 
         if(!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE) && currentMenuItemHovered == 0){
             chosenavatar = 0;
-            System.out.println("Hi this is working");
+            //System.out.println("Hi this is working");
         }
         else if(!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE) && currentMenuItemHovered == 1){
             chosenavatar = 1;
-            System.out.println("Hi this is working 2");
+            //System.out.println("Hi this is working 2");
         }
 
         // if Esc is pressed, go back to main menu
         if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
             screenCoordinator.setGameState(GameState.MENU);
         }
+
 
 
     }

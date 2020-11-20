@@ -9,6 +9,7 @@ import Level.Map;
 import Level.Player;
 import Level.PlayerListener;
 import Maps.TestMap;
+import Maps.TestMap2;
 import Players.Cat;
 import Players.Dog;
 import Utils.Stopwatch;
@@ -23,6 +24,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected LevelClearedScreen levelClearedScreen;
     protected LevelLoseScreen levelLoseScreen;
     protected AvatarOptionsScreen avatar;
+    private boolean level1Completed = false;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -30,9 +32,21 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
     public void initialize() {
         // define/setup map
-        this.map = new TestMap();
-        map.reset();
-        Audio.playMusic("BGM.wav");
+        if(level1Completed) {
+            System.out.println("Heyo we here");
+            this.map = new TestMap2();
+            map.reset();
+
+        } else {
+            this.map = new TestMap();
+            map.reset();
+        }
+       // Audio.playMusic("BGM.wav");
+
+        //New Code-Sammi
+        this.onLevelStarted();
+
+
 
         // setup player
         if (avatar.chosenavatar == 0) {
@@ -59,6 +73,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case RUNNING:
                 player.update();
                 map.update(player);
+
                 break;
             // if level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:
@@ -71,7 +86,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case LEVEL_WIN_MESSAGE:
                 if (screenTimer.isTimeUp()) {
                     levelClearedScreen = null;
-                    goBackToMenu();
+                    //if(all levels are completed)
+                   // goBackToMenu();
+                    level1Completed = true;
+                    resetLevel();
                 }
                 break;
             // if player died in level, bring up level lost screen
@@ -98,6 +116,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
                 break;
             case LEVEL_WIN_MESSAGE:
                 levelClearedScreen.draw(graphicsHandler);
+
                 break;
             case LEVEL_LOSE_MESSAGE:
                 levelLoseScreen.draw(graphicsHandler);
@@ -112,11 +131,23 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     @Override
     public void onLevelCompleted() {
         playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
+        //music from level is stopped here
+        Audio.stopMusic();
+        //win sound effect is played here
+        Audio.playMusic("win.wav");
+
     }
+    public void onLevelStarted() {
+        Audio.playMusic("BGM.wav");
+    }
+
 
     @Override
     public void onDeath() {
         playLevelScreenState = PlayLevelScreenState.PLAYER_DEAD;
+        Audio.stopMusic();
+        Audio.playMusic("meow.wav");
+
     }
 
     public void resetLevel() {
