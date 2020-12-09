@@ -11,6 +11,7 @@ import Level.Map;
 import Level.Player;
 import Level.PlayerListener;
 import Maps.TestMap;
+import Maps.TestMap2;
 import Players.Cat;
 import Players.Dog;
 import Players.Ninja;
@@ -29,6 +30,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	protected LevelLoseScreen levelLoseScreen;
 	protected AvatarOptionsScreen avatar;
 	protected SpriteFont livesLabel;
+	private boolean level1Completed = false;
 
 	public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
 		this.screenCoordinator = screenCoordinator;
@@ -36,16 +38,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	
     public void initialize() {
         // define/setup map
-//        if(level1Completed) {
-//            System.out.println("Testing, Testing");
-//           this.map = new TestMap2();
-//            map.reset();
-//
-//        } else {
+        if(level1Completed) {
+           this.map = new TestMap2();
+            map.reset();
+
+        } else {
             this.map = new TestMap();
             map.reset();
-//        }
-       // Audio.playMusic("BGM.wav");
+        }
+        Audio.playMusic("BGM.wav");
 
         // setup player
         if (avatar.chosenavatar == 0) {
@@ -99,7 +100,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 		case LEVEL_WIN_MESSAGE:
 			if (screenTimer.isTimeUp()) {
 				levelClearedScreen = null;
-				goBackToMenu();
+				//goBackToMenu();
+				level1Completed = true;
+				resetLevel();
 			}
 			break;
 		// if player died in level, bring up level lost screen
@@ -145,16 +148,28 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 	public static boolean playLevelScreenRunning() {
 		return playLevelScreenState == PlayLevelScreenState.RUNNING;
 	}
+	
+	public void onLevelStarted() {
+		Audio.playMusic("BGM.wav");
+	}
+	
+	
 
 	@Override
 	public void onLevelCompleted() {
 		playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
+		Audio.stopMusic();
+		Audio.playMusic("src/win.wav");
 	}
 
 	@Override
-	public void onDeath() {
-		playLevelScreenState = PlayLevelScreenState.PLAYER_DEAD;
+	 public void onDeath() {
+	   playLevelScreenState = PlayLevelScreenState.PLAYER_DEAD;
+	   Audio.stopMusic();
+	   Audio.playMusic("src/meow.wav");
+
 	}
+
 
 	public void resetLevel() {
 		initialize();
