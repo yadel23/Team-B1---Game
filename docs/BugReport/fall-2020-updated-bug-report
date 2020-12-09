@@ -1,0 +1,8 @@
+Bug Report
+* Previous bugs from the original version of the project have all been fixed except for the following:
+	* Transparent white
+		* Some parts of the Characters are transparent
+	* Arrow keys
+		* There is still a minor bug where when you do the arrow key override, the avatar will move in the right direction but the image does not flip, appears to be moving in reverse
+* New bugs in the program include:
+	* Audio does not loop (once it ends, it ends)

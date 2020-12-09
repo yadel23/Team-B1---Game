@@ -50,7 +50,6 @@ public abstract class Player extends GameObject {
 
 	// if true, player cannot be hurt by enemies (good for testing)
 	protected boolean isInvincible = false;
-	//was originally false
 	
 	protected int numOfCollisions = 0;
 	protected static int numOfLives;
