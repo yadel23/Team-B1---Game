@@ -9,6 +9,7 @@ import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Player;
 
+import java.awt.Color;
 import java.util.HashMap;
 
 // This is the class for the Cat player character
@@ -35,7 +36,7 @@ public class Cat extends Player {
 
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
-        //drawBounds(graphicsHandler, new Color(255, 0, 0, 170));
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 170));
     }
 
     @Override

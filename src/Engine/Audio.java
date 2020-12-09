@@ -21,6 +21,7 @@ public class Audio {
 		 clip = AudioSystem.getClip();
 		clip.open(audio);
 		clip.start();
+		//needs to be fixed so that it stops when player dies
 //		clip.loop(Clip.LOOP_CONTINUOUSLY);
 
 		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException error) {

@@ -113,9 +113,8 @@ public class AvatarOptionsScreen extends Screen{
             keyLocker.unlockKey(Key.SPACE);
         }
         
-     // if space is pressed, go back to main menu
+     // if space is pressed on avatar it is choosen, ESC to go back to main menu after that 
         if(!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE) && currentMenuItemHovered == 0){
-
                chosenavatar = 0;
         }
         else if(!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE) && currentMenuItemHovered == 1){
